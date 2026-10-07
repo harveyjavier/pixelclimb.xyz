@@ -3,60 +3,91 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07080c;
+  --surface: #0d0f16;
+  --foreground: #e7e9f0;
+  --muted: #8a92a6;
+  --line: rgba(255, 255, 255, 0.08);
+
+  /* In-game palette */
+  --gray: #708090;
+  --blue: #3783ff;
+  --indigo: #4815aa;
+  --green: #4de94c;
+  --red: #f60000;
+  --orange: #ff8c00;
+  --yellow: #ffee00;
+  --cyan: #2ef2ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --gray: #708090;
-    --blue: #3783ff;
-    --indigo: #4815aa;
-    --green: #4de94c;
-    --red: #f60000;
-    --orange: #ff8c00;
-    --yellow: #ffee00;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-.pcmb-text-gray {
-  color: var(--gray);
-}
-
-.pcmb-text-blue {
-  color: var(--blue);
-}
-
-.pcmb-text-indigo {
-  color: var(--indigo);
-}
-
-.pcmb-text-green {
-  color: var(--green);
-}
-
-.pcmb-text-red {
-  color: var(--red);
-}
-
-.pcmb-text-orange {
-  color: var(--orange);
-}
-
-.pcmb-text-yellow {
-  color: var(--yellow);
+::selection {
+  background: rgba(55, 131, 255, 0.35);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Faint techy grid that fades out toward the edges */
+  .bg-grid {
+    background-image: linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #ffffff 0%, #9cc0ff 55%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+}
+
+/* Floating "platforms" borrowed from the game */
+@keyframes float {
+  0%, 100% { transform: translateY(0) skewY(-6deg); }
+  50% { transform: translateY(-14px) skewY(-6deg); }
+}
+
+.platform {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .platform, .marquee, .pulse-dot { animation: none; }
 }
