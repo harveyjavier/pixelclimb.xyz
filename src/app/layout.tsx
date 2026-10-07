@@ -23,15 +23,22 @@ export const metadata: Metadata = {
     description: "Hyper-casual web3 game powered by Solana.",
     url: "https://pixelclimb.xyz",
     siteName: "Pixel Climb",
-    images: ["/pcmb_icon.png"],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Pixel Climb gameplay: a block jumping between platforms",
+      },
+    ],
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     site: "@pixelclimb",
     title: "Pixel Climb",
     description: "Hyper-casual web3 game powered by Solana.",
-    images: ["/pcmb_icon.png"],
+    images: ["/og-image.png"],
   },
 };
 
