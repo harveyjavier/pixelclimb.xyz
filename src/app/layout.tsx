@@ -15,12 +15,12 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pixelclimb.xyz"),
-  title: "Pixel Climb — One-tap climbing on Solana",
+  title: "Pixel Climb — One-tap climbing on NEAR",
   description:
-    "Pixel Climb is a hyper-casual mobile game powered by Solana. Tap to jump, climb endless floors, collect gems, and hold $PCMB.",
+    "Pixel Climb is a hyper-casual mobile game powered by NEAR. Tap to jump, climb endless floors, collect gems, and hold $PCMB.",
   openGraph: {
     title: "Pixel Climb",
-    description: "Hyper-casual web3 game powered by Solana.",
+    description: "Hyper-casual web3 game powered by NEAR.",
     url: "https://pixelclimb.xyz",
     siteName: "Pixel Climb",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@pixelclimb",
     title: "Pixel Climb",
-    description: "Hyper-casual web3 game powered by Solana.",
+    description: "Hyper-casual web3 game powered by NEAR.",
     images: ["/og-image.png"],
   },
 };

@@ -5,20 +5,20 @@ import CopyAddress from "../components/CopyAddress";
 
 const LINKS = {
   play: "https://play.google.com/store/apps/details?id=com.harvz.pixelclimb",
-  token:
-    "https://explorer.solana.com/address/DuZq6LWkvRwLw5t2GqbSx3BeAtSeikDVf1VKraxbMLcs?cluster=devnet",
+  token: "https://testnet.nearblocks.io/token/pcmb.testnet",
+  hackathon: "https://nearhackathon.com",
   deck: "https://docs.google.com/presentation/d/16RyBghsvNW822D_68EvWE-_b2ZL5Y8TkQRFif1F48lc/edit?usp=sharing",
   x: "https://x.com/pixelclimb",
   email: "mailto:support@pixelclimb.xyz",
 };
 
-const MINT = "DuZq6LWkvRwLw5t2GqbSx3BeAtSeikDVf1VKraxbMLcs";
+const CONTRACT = "pcmb.testnet";
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 const TICKER = [
-  "Built on Solana",
-  "SPL Token · $PCMB",
+  "Built on NEAR",
+  "NEP-141 Token · $PCMB",
   "Live on Google Play",
   "Free to play",
   "One-tap gameplay",
@@ -54,8 +54,8 @@ const THESIS = [
   },
   {
     k: "Chain",
-    title: "Solana-native",
-    body: "Fast finality and sub-cent fees make it practical to put micro-rewards and in-game actions on-chain.",
+    title: "NEAR-native",
+    body: "Fast finality and low fees make on-chain micro-rewards practical, and players never have to notice the chain.",
   },
   {
     k: "Product",
@@ -71,16 +71,16 @@ const THESIS = [
 
 const TOKEN_SPECS = [
   ["Symbol", "PCMB"],
-  ["Standard", "SPL Token"],
-  ["Network", "Solana · Devnet"],
+  ["Standard", "NEP-141"],
+  ["Network", "NEAR · Testnet"],
   ["Role", "Native + Governance"],
 ];
 
 const HACKATHONS = [
-  "Colosseum",
-  "Solana Radar PH",
-  "PGDX Solana × YGG GameJam",
-  "DOST · DICT · DTI Region 5",
+  {
+    label: "NEAR Hackathon · Games With Real Economies",
+    href: LINKS.hackathon,
+  },
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -195,7 +195,7 @@ export default function Home() {
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted">
               <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-pcmb-green" />
-              Live on Google Play · Powered by Solana
+              Live on Google Play · Powered by NEAR
             </div>
 
             <h1 className="mt-6 font-pixel text-[2rem] leading-[1.1] min-[400px]:text-4xl sm:text-6xl lg:text-[4rem] xl:text-7xl">
@@ -205,7 +205,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-lg text-balance text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-              Pixel Climb is a one-tap, hyper-casual mobile game on Solana. You
+              Pixel Climb is a one-tap, hyper-casual mobile game on NEAR. You
               learn it in seconds, then keep coming back for the next floor and
               a share of <span className="text-foreground">$PCMB</span>.
             </p>
@@ -221,7 +221,7 @@ export default function Home() {
 
             <dl className="mx-auto mt-12 grid max-w-md grid-cols-3 divide-x divide-line border-y border-line lg:mx-0">
               {[
-                ["Chain", "Solana"],
+                ["Chain", "NEAR"],
                 ["Token", "$PCMB"],
                 ["Price", "Free"],
               ].map(([k, v]) => (
@@ -290,12 +290,12 @@ export default function Home() {
               </h2>
               <p className="mt-4 max-w-lg leading-relaxed text-muted">
                 $PCMB is Pixel Climb&apos;s native and governance token, issued
-                as an SPL token on Solana. It is currently deployed on devnet
+                as a NEP-141 fungible token on NEAR. It is currently deployed on testnet
                 while the in-game economy is being tested.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <GhostButton href={LINKS.token}>
-                  View on Solana Explorer <Arrow />
+                  View on Nearblocks <Arrow />
                 </GhostButton>
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function Home() {
                     <p className="text-xs text-muted">Pixel Climb Token</p>
                   </div>
                   <span className="ml-auto rounded-full border border-pcmb-orange/30 bg-pcmb-orange/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-pcmb-orange">
-                    Devnet
+                    Testnet
                   </span>
                 </div>
 
@@ -323,9 +323,9 @@ export default function Home() {
                   ))}
                 </dl>
 
-                <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted">Mint address</p>
+                <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted">Contract address</p>
                 <div className="mt-2">
-                  <CopyAddress address={MINT} />
+                  <CopyAddress address={CONTRACT} />
                 </div>
               </div>
             </div>
@@ -361,11 +361,17 @@ export default function Home() {
           </div>
 
           <div className="mt-14">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">Hackathon submissions</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">Hackathon submission</p>
             <ul className="mt-4 flex flex-wrap gap-2">
               {HACKATHONS.map((h) => (
-                <li key={h} className="rounded-full border border-line px-3.5 py-1.5 text-xs text-muted">
-                  {h}
+                <li key={h.label}>
+                  <a
+                    href={h.href}
+                    {...external}
+                    className="inline-flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 text-xs text-muted transition-colors hover:border-white/20 hover:text-foreground"
+                  >
+                    {h.label} <Arrow />
+                  </a>
                 </li>
               ))}
             </ul>
@@ -404,7 +410,7 @@ export default function Home() {
           <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted">
             <a href={LINKS.x} {...external} className="hover:text-foreground">X / Twitter</a>
             <a href={LINKS.deck} {...external} className="hover:text-foreground">Pitch deck</a>
-            <a href={LINKS.token} {...external} className="hover:text-foreground">Explorer</a>
+            <a href={LINKS.token} {...external} className="hover:text-foreground">Nearblocks</a>
             <a href={LINKS.email} className="hover:text-foreground">support@pixelclimb.xyz</a>
           </nav>
         </div>
