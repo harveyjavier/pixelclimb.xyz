@@ -136,7 +136,7 @@ function PhoneMockup() {
     <div className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
       {/* glow */}
       <div className="absolute -inset-10 -z-10 rounded-full bg-pcmb-blue/25 blur-3xl" aria-hidden />
-      <div className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-white/10 to-white/[0.02] p-2.5 shadow-2xl">
+      <div className="rounded-[2.5rem] border border-white/10 bg-linear-to-b from-white/10 to-white/[0.02] p-2.5 shadow-2xl">
         <div className="relative overflow-hidden rounded-[2rem] bg-white">
           <Image
             src={preview}
@@ -301,7 +301,7 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br from-pcmb-blue/40 via-transparent to-pcmb-indigo/40" aria-hidden />
+              <div className="absolute -inset-px -z-10 rounded-2xl bg-linear-to-br from-pcmb-blue/40 via-transparent to-pcmb-indigo/40" aria-hidden />
               <div className="rounded-2xl border border-line bg-background p-6 sm:p-8">
                 <div className="flex items-center gap-4">
                   <Image src={pcmbLogo} alt="PCMB token" width={48} height={48} className="pixelated" />
