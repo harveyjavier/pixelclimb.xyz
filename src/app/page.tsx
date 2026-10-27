@@ -1,18 +1,14 @@
 import Image from "next/image";
 import pcmbLogo from "./images/pcmb-logo.png";
 import preview from "./images/preview.gif";
-import CopyAddress from "../components/CopyAddress";
 
 const LINKS = {
   play: "https://play.google.com/store/apps/details?id=com.harvz.pixelclimb",
-  token: "https://testnet.nearblocks.io/token/pcmb.testnet",
   hackathon: "https://nearhackathon.com",
   deck: "https://docs.google.com/presentation/d/16RyBghsvNW822D_68EvWE-_b2ZL5Y8TkQRFif1F48lc/edit?usp=sharing",
   x: "https://x.com/pixelclimb",
   email: "mailto:support@pixelclimb.xyz",
 };
-
-const CONTRACT = "pcmb.testnet";
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
@@ -290,14 +286,9 @@ export default function Home() {
               </h2>
               <p className="mt-4 max-w-lg leading-relaxed text-muted">
                 $PCMB is Pixel Climb&apos;s native and governance token, issued
-                as a NEP-141 fungible token on NEAR. It is currently deployed on testnet
-                while the in-game economy is being tested.
+                as a NEP-141 fungible token on NEAR. It is launching on NEAR
+                testnet while the in-game economy is being tested.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <GhostButton href={LINKS.token}>
-                  View on Nearblocks <Arrow />
-                </GhostButton>
-              </div>
             </div>
 
             <div className="relative">
@@ -323,10 +314,6 @@ export default function Home() {
                   ))}
                 </dl>
 
-                <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted">Contract address</p>
-                <div className="mt-2">
-                  <CopyAddress address={CONTRACT} />
-                </div>
               </div>
             </div>
           </div>
@@ -410,7 +397,6 @@ export default function Home() {
           <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted">
             <a href={LINKS.x} {...external} className="hover:text-foreground">X / Twitter</a>
             <a href={LINKS.deck} {...external} className="hover:text-foreground">Pitch deck</a>
-            <a href={LINKS.token} {...external} className="hover:text-foreground">Nearblocks</a>
             <a href={LINKS.email} className="hover:text-foreground">support@pixelclimb.xyz</a>
           </nav>
         </div>
