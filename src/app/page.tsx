@@ -1,24 +1,20 @@
 import Image from "next/image";
 import pcmbLogo from "./images/pcmb-logo.png";
 import preview from "./images/preview.gif";
-import CopyAddress from "../components/CopyAddress";
 
 const LINKS = {
   play: "https://play.google.com/store/apps/details?id=com.harvz.pixelclimb",
-  token:
-    "https://explorer.solana.com/address/DuZq6LWkvRwLw5t2GqbSx3BeAtSeikDVf1VKraxbMLcs?cluster=devnet",
+  hackathon: "https://nearhackathon.com",
   deck: "https://docs.google.com/presentation/d/16RyBghsvNW822D_68EvWE-_b2ZL5Y8TkQRFif1F48lc/edit?usp=sharing",
   x: "https://x.com/pixelclimb",
   email: "mailto:support@pixelclimb.xyz",
 };
 
-const MINT = "DuZq6LWkvRwLw5t2GqbSx3BeAtSeikDVf1VKraxbMLcs";
-
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 const TICKER = [
-  "Built on Solana",
-  "SPL Token · $PCMB",
+  "Built on NEAR",
+  "NEP-141 Token · $PCMB",
   "Live on Google Play",
   "Free to play",
   "One-tap gameplay",
@@ -54,8 +50,8 @@ const THESIS = [
   },
   {
     k: "Chain",
-    title: "Solana-native",
-    body: "Fast finality and sub-cent fees make it practical to put micro-rewards and in-game actions on-chain.",
+    title: "NEAR-native",
+    body: "Fast finality and low fees make on-chain micro-rewards practical, and players never have to notice the chain.",
   },
   {
     k: "Product",
@@ -71,16 +67,16 @@ const THESIS = [
 
 const TOKEN_SPECS = [
   ["Symbol", "PCMB"],
-  ["Standard", "SPL Token"],
-  ["Network", "Solana · Devnet"],
+  ["Standard", "NEP-141"],
+  ["Network", "NEAR · Testnet"],
   ["Role", "Native + Governance"],
 ];
 
 const HACKATHONS = [
-  "Colosseum",
-  "Solana Radar PH",
-  "PGDX Solana × YGG GameJam",
-  "DOST · DICT · DTI Region 5",
+  {
+    label: "NEAR Hackathon · Games With Real Economies",
+    href: LINKS.hackathon,
+  },
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -108,7 +104,7 @@ function GhostButton({ href, children }: { href: string; children: React.ReactNo
     <a
       href={href}
       {...external}
-      className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line bg-white/[0.03] px-6 text-sm font-semibold text-foreground backdrop-blur transition hover:border-white/20 hover:bg-white/[0.06] active:scale-[0.98]"
+      className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line bg-white/3 px-6 text-sm font-semibold text-foreground backdrop-blur transition hover:border-white/20 hover:bg-white/6 active:scale-[0.98]"
     >
       {children}
     </a>
@@ -133,11 +129,11 @@ function PlayIcon() {
 
 function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
+    <div className="relative mx-auto w-60 sm:w-67.5 lg:w-75">
       {/* glow */}
       <div className="absolute -inset-10 -z-10 rounded-full bg-pcmb-blue/25 blur-3xl" aria-hidden />
-      <div className="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-white/10 to-white/[0.02] p-2.5 shadow-2xl">
-        <div className="relative overflow-hidden rounded-[2rem] bg-white">
+      <div className="rounded-[2.5rem] border border-white/10 bg-linear-to-b from-white/10 to-white/2 p-2.5 shadow-2xl">
+        <div className="relative overflow-hidden rounded-4xl bg-white">
           <Image
             src={preview}
             alt="Pixel Climb gameplay: a yellow block jumping between colored platforms"
@@ -149,10 +145,10 @@ function PhoneMockup() {
         </div>
       </div>
       {/* floating platforms */}
-      <span className="platform absolute -left-10 top-16 h-3 w-14 rounded-sm bg-pcmb-red/90" aria-hidden />
-      <span className="platform absolute -right-12 top-40 h-3 w-16 rounded-sm bg-pcmb-green/90 [animation-delay:-2s]" aria-hidden />
-      <span className="platform absolute -left-14 bottom-28 h-3 w-12 rounded-sm bg-pcmb-indigo [animation-delay:-4s]" aria-hidden />
-      <span className="platform absolute -right-8 bottom-12 h-3 w-10 rounded-sm bg-pcmb-yellow/90 [animation-delay:-1s]" aria-hidden />
+      <span className="platform absolute -left-10 top-16 h-3 w-14 rounded-xs bg-pcmb-red/90" aria-hidden />
+      <span className="platform absolute -right-12 top-40 h-3 w-16 rounded-xs bg-pcmb-green/90 [animation-delay:-2s]" aria-hidden />
+      <span className="platform absolute -left-14 bottom-28 h-3 w-12 rounded-xs bg-pcmb-indigo [animation-delay:-4s]" aria-hidden />
+      <span className="platform absolute -right-8 bottom-12 h-3 w-10 rounded-xs bg-pcmb-yellow/90 [animation-delay:-1s]" aria-hidden />
     </div>
   );
 }
@@ -161,9 +157,9 @@ export default function Home() {
   return (
     <div className="relative overflow-x-clip">
       {/* Background */}
-      <div className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-[900px]" aria-hidden />
+      <div className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-225" aria-hidden />
       <div
-        className="pointer-events-none absolute left-1/2 top-[-200px] h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(72,21,170,0.35),transparent)]"
+        className="pointer-events-none absolute left-1/2 -top-50 h-150 w-225 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(72,21,170,0.35),transparent)]"
         aria-hidden
       />
 
@@ -193,9 +189,9 @@ export default function Home() {
         {/* Hero */}
         <section className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:grid-cols-[1.1fr_1fr] lg:pb-28">
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted">
+            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/3 px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted">
               <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-pcmb-green" />
-              Live on Google Play · Powered by Solana
+              Live on Google Play · Powered by NEAR
             </div>
 
             <h1 className="mt-6 font-pixel text-[2rem] leading-[1.1] min-[400px]:text-4xl sm:text-6xl lg:text-[4rem] xl:text-7xl">
@@ -205,7 +201,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-lg text-balance text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-              Pixel Climb is a one-tap, hyper-casual mobile game on Solana. You
+              Pixel Climb is a one-tap, hyper-casual mobile game on NEAR. You
               learn it in seconds, then keep coming back for the next floor and
               a share of <span className="text-foreground">$PCMB</span>.
             </p>
@@ -221,11 +217,11 @@ export default function Home() {
 
             <dl className="mx-auto mt-12 grid max-w-md grid-cols-3 divide-x divide-line border-y border-line lg:mx-0">
               {[
-                ["Chain", "Solana"],
+                ["Chain", "NEAR"],
                 ["Token", "$PCMB"],
                 ["Price", "Free"],
               ].map(([k, v]) => (
-                <div key={k} className="px-2 py-4 text-center lg:text-left lg:first:pl-0 lg:[&:not(:first-child)]:pl-5">
+                <div key={k} className="px-2 py-4 text-center lg:text-left lg:first:pl-0 lg:not-first:pl-5">
                   <dt className="font-mono text-[10px] uppercase tracking-widest text-muted">{k}</dt>
                   <dd className="mt-1 font-pixel text-lg">{v}</dd>
                 </div>
@@ -238,7 +234,7 @@ export default function Home() {
 
         {/* Ticker */}
         <div className="border-y border-line bg-surface/60 py-4" aria-hidden>
-          <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+          <div className="overflow-hidden mask-[linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
             <div className="marquee flex w-max">
               {[...TICKER, ...TICKER].map((t, i) => (
                 <span key={i} className="flex items-center gap-10 whitespace-nowrap pr-10 font-mono text-xs uppercase tracking-[0.2em] text-muted">
@@ -270,7 +266,7 @@ export default function Home() {
                 className="group relative overflow-hidden rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-white/15 sm:p-8"
               >
                 <div className="flex items-center justify-between">
-                  <span className={`block h-3 w-10 -skew-y-6 rounded-sm ${g.color}`} aria-hidden />
+                  <span className={`block h-3 w-10 -skew-y-6 rounded-xs ${g.color}`} aria-hidden />
                   <span className="font-mono text-xs text-muted">{g.tag}</span>
                 </div>
                 <h3 className="mt-10 text-lg font-semibold">{g.title}</h3>
@@ -290,18 +286,13 @@ export default function Home() {
               </h2>
               <p className="mt-4 max-w-lg leading-relaxed text-muted">
                 $PCMB is Pixel Climb&apos;s native and governance token, issued
-                as an SPL token on Solana. It is currently deployed on devnet
-                while the in-game economy is being tested.
+                as a NEP-141 fungible token on NEAR. It is launching on NEAR
+                testnet while the in-game economy is being tested.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <GhostButton href={LINKS.token}>
-                  View on Solana Explorer <Arrow />
-                </GhostButton>
-              </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br from-pcmb-blue/40 via-transparent to-pcmb-indigo/40" aria-hidden />
+              <div className="absolute -inset-px -z-10 rounded-2xl bg-linear-to-br from-pcmb-blue/40 via-transparent to-pcmb-indigo/40" aria-hidden />
               <div className="rounded-2xl border border-line bg-background p-6 sm:p-8">
                 <div className="flex items-center gap-4">
                   <Image src={pcmbLogo} alt="PCMB token" width={48} height={48} className="pixelated" />
@@ -310,7 +301,7 @@ export default function Home() {
                     <p className="text-xs text-muted">Pixel Climb Token</p>
                   </div>
                   <span className="ml-auto rounded-full border border-pcmb-orange/30 bg-pcmb-orange/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-pcmb-orange">
-                    Devnet
+                    Testnet
                   </span>
                 </div>
 
@@ -323,10 +314,6 @@ export default function Home() {
                   ))}
                 </dl>
 
-                <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted">Mint address</p>
-                <div className="mt-2">
-                  <CopyAddress address={MINT} />
-                </div>
               </div>
             </div>
           </div>
@@ -361,11 +348,17 @@ export default function Home() {
           </div>
 
           <div className="mt-14">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">Hackathon submissions</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">Hackathon submission</p>
             <ul className="mt-4 flex flex-wrap gap-2">
               {HACKATHONS.map((h) => (
-                <li key={h} className="rounded-full border border-line px-3.5 py-1.5 text-xs text-muted">
-                  {h}
+                <li key={h.label}>
+                  <a
+                    href={h.href}
+                    {...external}
+                    className="inline-flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 text-xs text-muted transition-colors hover:border-white/20 hover:text-foreground"
+                  >
+                    {h.label} <Arrow />
+                  </a>
                 </li>
               ))}
             </ul>
@@ -376,7 +369,7 @@ export default function Home() {
         <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 sm:pb-32">
           <div className="relative overflow-hidden rounded-3xl border border-line bg-surface px-6 py-16 text-center sm:px-12 sm:py-20">
             <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
-            <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-[600px] -translate-x-1/2 rounded-full bg-pcmb-blue/20 blur-3xl" aria-hidden />
+            <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-150 -translate-x-1/2 rounded-full bg-pcmb-blue/20 blur-3xl" aria-hidden />
             <div className="relative">
               <h2 className="text-balance font-pixel text-3xl sm:text-5xl">How high can you climb?</h2>
               <p className="mx-auto mt-4 max-w-md text-muted">
@@ -404,7 +397,6 @@ export default function Home() {
           <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted">
             <a href={LINKS.x} {...external} className="hover:text-foreground">X / Twitter</a>
             <a href={LINKS.deck} {...external} className="hover:text-foreground">Pitch deck</a>
-            <a href={LINKS.token} {...external} className="hover:text-foreground">Explorer</a>
             <a href={LINKS.email} className="hover:text-foreground">support@pixelclimb.xyz</a>
           </nav>
         </div>

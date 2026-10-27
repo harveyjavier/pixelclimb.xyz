@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-pcmb-gray: var(--gray);
+  --color-pcmb-blue: var(--blue);
+  --color-pcmb-indigo: var(--indigo);
+  --color-pcmb-green: var(--green);
+  --color-pcmb-red: var(--red);
+  --color-pcmb-orange: var(--orange);
+  --color-pcmb-yellow: var(--yellow);
+  --color-pcmb-cyan: var(--cyan);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-pixel: var(--font-silkscreen), monospace;
+}
 
 :root {
   --background: #07080c;
@@ -35,10 +54,6 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
   /* Faint techy grid that fades out toward the edges */
   .bg-grid {
     background-image: linear-gradient(var(--line) 1px, transparent 1px),
