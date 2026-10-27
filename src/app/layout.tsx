@@ -5,13 +5,13 @@ import "./globals.css";
 
 const pixel = localFont({
   src: "./fonts/slkscr-webfont.woff",
-  variable: "--font-pixel",
+  variable: "--font-silkscreen",
   weight: "100 900",
 });
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pixelclimb.xyz"),

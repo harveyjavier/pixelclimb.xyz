@@ -145,10 +145,10 @@ function PhoneMockup() {
         </div>
       </div>
       {/* floating platforms */}
-      <span className="platform absolute -left-10 top-16 h-3 w-14 rounded-sm bg-pcmb-red/90" aria-hidden />
-      <span className="platform absolute -right-12 top-40 h-3 w-16 rounded-sm bg-pcmb-green/90 [animation-delay:-2s]" aria-hidden />
-      <span className="platform absolute -left-14 bottom-28 h-3 w-12 rounded-sm bg-pcmb-indigo [animation-delay:-4s]" aria-hidden />
-      <span className="platform absolute -right-8 bottom-12 h-3 w-10 rounded-sm bg-pcmb-yellow/90 [animation-delay:-1s]" aria-hidden />
+      <span className="platform absolute -left-10 top-16 h-3 w-14 rounded-xs bg-pcmb-red/90" aria-hidden />
+      <span className="platform absolute -right-12 top-40 h-3 w-16 rounded-xs bg-pcmb-green/90 [animation-delay:-2s]" aria-hidden />
+      <span className="platform absolute -left-14 bottom-28 h-3 w-12 rounded-xs bg-pcmb-indigo [animation-delay:-4s]" aria-hidden />
+      <span className="platform absolute -right-8 bottom-12 h-3 w-10 rounded-xs bg-pcmb-yellow/90 [animation-delay:-1s]" aria-hidden />
     </div>
   );
 }
@@ -266,7 +266,7 @@ export default function Home() {
                 className="group relative overflow-hidden rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-white/15 sm:p-8"
               >
                 <div className="flex items-center justify-between">
-                  <span className={`block h-3 w-10 -skew-y-6 rounded-sm ${g.color}`} aria-hidden />
+                  <span className={`block h-3 w-10 -skew-y-6 rounded-xs ${g.color}`} aria-hidden />
                   <span className="font-mono text-xs text-muted">{g.tag}</span>
                 </div>
                 <h3 className="mt-10 text-lg font-semibold">{g.title}</h3>

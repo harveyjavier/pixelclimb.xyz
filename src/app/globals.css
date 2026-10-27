@@ -16,9 +16,9 @@
   --color-pcmb-yellow: var(--yellow);
   --color-pcmb-cyan: var(--cyan);
 
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
-  --font-pixel: var(--font-pixel), monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-pixel: var(--font-silkscreen), monospace;
 }
 
 :root {
