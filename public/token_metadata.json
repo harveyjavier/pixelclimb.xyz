@@ -1,6 +1,6 @@
 {
-  "name": "Pixel Climb Token - Devnet",
+  "name": "Pixel Climb Token - Testnet",
   "symbol": "PCMB",
-  "description": "Native and governance Token of the Pixel Climb hame.",
+  "description": "Native and governance Token of the Pixel Climb game.",
   "image": "https://pixelclimb.xyz/pcmb_icon.png"
 }
