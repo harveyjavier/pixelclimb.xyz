@@ -129,6 +129,15 @@ body {
     opacity 0.9s var(--ease),
     transform 0.9s var(--ease);
   transition-delay: calc(var(--i, 0) * 90ms);
+  /* Safety net for when JS fails to load/hydrate or a fast scroller
+     never triggers the observer: reveal anyway after a couple seconds. */
+  animation: reveal-fallback 0.6s var(--ease) 2.5s forwards;
+}
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .js [data-reveal][data-in] {
   opacity: 1;
@@ -261,6 +270,16 @@ body {
     animation: pulse-dot 2s ease-in-out infinite;
   }
 
+  /* Mobile menu height animation without measuring */
+  .menu-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+  }
+  .menu-collapse[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+
   /* Card 01: block hops wall to wall */
   .hop-x {
     animation: hop-x 0.8s linear infinite alternate;
@@ -377,14 +396,16 @@ body {
   }
 }
 
-/* Mobile menu height animation without measuring */
-.menu-collapse {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.45s var(--ease);
-}
-.menu-collapse[data-open="true"] {
-  grid-template-rows: 1fr;
+/* Printing must never ship hidden reveal-gated content */
+@media print {
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .js .podium {
+    transform: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -392,6 +413,7 @@ body {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
