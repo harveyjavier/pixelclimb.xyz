@@ -68,6 +68,9 @@ export default function Motion() {
     };
 
     const onLeave = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      last = null;
       tilted?.style.removeProperty("--rx");
       tilted?.style.removeProperty("--ry");
       tilted = null;

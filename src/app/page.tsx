@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import Motion from "@/components/Motion";
 import SiteHeader from "@/components/SiteHeader";
+import GameplayVideo from "@/components/GameplayVideo";
 import pcmbLogo from "./images/pcmb-logo.png";
 
 const LINKS = {
@@ -240,21 +241,13 @@ function PhoneMockup() {
         <div className="absolute -inset-12 -z-10 rounded-full bg-pcmb-blue/25 blur-3xl" aria-hidden />
         <div className="border-glow rounded-[2.75rem] bg-linear-to-b from-white/10 to-white/2 p-2.5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.9)]">
           <div className="relative overflow-hidden rounded-[2.1rem] bg-white">
-            <video
+            <GameplayVideo
               className="block h-auto w-full"
               width={576}
               height={1012}
               poster="/media/gameplay-poster.webp"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-label="Pixel Climb gameplay: a yellow block jumping between colored platforms"
-            >
-              <source src="/media/gameplay.webm" type="video/webm" />
-              <source src="/media/gameplay.mp4" type="video/mp4" />
-            </video>
+              label="Pixel Climb gameplay: a yellow block jumping between colored platforms"
+            />
           </div>
         </div>
       </div>
@@ -271,28 +264,29 @@ function TokenStage() {
   return (
     <div
       data-reveal
-      data-play
       className="border-glow relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl bg-surface"
     >
-      <div className="bg-grid-sm absolute inset-0 mask-[radial-gradient(circle_at_50%_45%,#000_20%,transparent_70%)]" aria-hidden />
-      <div className="absolute left-1/2 top-[45%] h-[78%] w-[78%] -translate-1/2" aria-hidden>
-        <div className="spin-slow h-full w-full rounded-full border border-dashed border-white/10" />
-      </div>
-      <div className="absolute left-1/2 top-[45%] h-[56%] w-[56%] -translate-1/2" aria-hidden>
-        <div className="spin-slow-rev relative h-full w-full rounded-full border border-pcmb-blue/25">
-          <span className="absolute -top-1 left-1/2 -ml-1 h-2 w-2 bg-pcmb-blue" />
-          <span className="absolute -bottom-1 left-1/2 -ml-1 h-2 w-2 bg-pcmb-cyan" />
+      <div data-play className="absolute inset-0">
+        <div className="bg-grid-sm absolute inset-0 mask-[radial-gradient(circle_at_50%_45%,#000_20%,transparent_70%)]" aria-hidden />
+        <div className="absolute left-1/2 top-[45%] h-[78%] w-[78%] -translate-1/2" aria-hidden>
+          <div className="spin-slow h-full w-full rounded-full border border-dashed border-white/10" />
         </div>
-      </div>
-      <div className="absolute left-1/2 top-[45%] h-40 w-40 -translate-1/2 rounded-full bg-pcmb-blue/30 blur-3xl" aria-hidden />
+        <div className="absolute left-1/2 top-[45%] h-[56%] w-[56%] -translate-1/2" aria-hidden>
+          <div className="spin-slow-rev relative h-full w-full rounded-full border border-pcmb-blue/25">
+            <span className="absolute -top-1 left-1/2 -ml-1 h-2 w-2 bg-pcmb-blue" />
+            <span className="absolute -bottom-1 left-1/2 -ml-1 h-2 w-2 bg-pcmb-cyan" />
+          </div>
+        </div>
+        <div className="absolute left-1/2 top-[45%] h-40 w-40 -translate-1/2 rounded-full bg-pcmb-blue/30 blur-3xl" aria-hidden />
 
-      <div className="absolute left-1/2 top-[45%] h-32 w-32 -translate-1/2 perspective-[800px] sm:h-36 sm:w-36">
-        <div className="coin relative h-full w-full">
-          <Image src={pcmbLogo} alt="PCMB token" fill sizes="144px" className="coin-face pixelated object-contain" />
-          <Image src={pcmbLogo} alt="" fill sizes="144px" className="coin-face coin-back pixelated object-contain" />
+        <div className="absolute left-1/2 top-[45%] h-32 w-32 -translate-1/2 perspective-[800px] sm:h-36 sm:w-36">
+          <div className="coin relative h-full w-full">
+            <Image src={pcmbLogo} alt="PCMB token" fill sizes="144px" className="coin-face pixelated object-contain" />
+            <Image src={pcmbLogo} alt="" fill sizes="144px" className="coin-face coin-back pixelated object-contain" />
+          </div>
         </div>
+        <div className="coin-shadow absolute left-1/2 top-[70%] -ml-12 h-3 w-24 rounded-[50%] bg-black/70 blur-sm" aria-hidden />
       </div>
-      <div className="coin-shadow absolute left-1/2 top-[70%] -ml-12 h-3 w-24 rounded-[50%] bg-black/70 blur-sm" aria-hidden />
 
       <span className="absolute right-5 top-5 rounded-full border border-pcmb-orange/30 bg-pcmb-orange/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-pcmb-orange">
         Testnet

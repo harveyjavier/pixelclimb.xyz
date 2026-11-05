@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import pcmbLogo from "../app/images/pcmb-logo.png";
 
 const NAV = [
@@ -14,6 +14,7 @@ export default function SiteHeader({ playHref }: { playHref: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let frame = 0;
@@ -51,7 +52,12 @@ export default function SiteHeader({ playHref }: { playHref: string }) {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      // Return focus to the toggle so keyboard users don't lose their place
+      toggleRef.current?.focus();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -59,9 +65,9 @@ export default function SiteHeader({ playHref }: { playHref: string }) {
   const raised = scrolled || open;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
       <div
-        className={`mx-auto max-w-6xl rounded-2xl border transition-[background-color,border-color,box-shadow] duration-500 ease-out-expo ${
+        className={`pointer-events-auto mx-auto max-w-6xl rounded-2xl border transition-[background-color,border-color,box-shadow] duration-500 ease-out-expo ${
           raised
             ? "border-line bg-background/75 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.8)] backdrop-blur-xl"
             : "border-transparent bg-transparent"
@@ -115,6 +121,7 @@ export default function SiteHeader({ playHref }: { playHref: string }) {
               Play
             </a>
             <button
+              ref={toggleRef}
               type="button"
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
