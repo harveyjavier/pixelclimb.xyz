@@ -7,6 +7,7 @@ import pcmbLogo from "./images/pcmb-logo.png";
 
 const LINKS = {
   play: "https://play.google.com/store/apps/details?id=com.harvz.pixelclimb",
+  web: "https://play.pixelclimb.xyz",
   hackathon: "https://nearhackathon.com",
   deck: "https://docs.google.com/presentation/d/16RyBghsvNW822D_68EvWE-_b2ZL5Y8TkQRFif1F48lc/edit?usp=sharing",
   x: "https://x.com/pixelclimb",
@@ -376,6 +377,9 @@ export default function Home() {
                 <PrimaryButton href={LINKS.play}>
                   <PlayIcon /> Play on Google Play
                 </PrimaryButton>
+                <GhostButton href={LINKS.web}>
+                  Play in browser <Arrow />
+                </GhostButton>
                 <GhostButton href={LINKS.deck}>
                   Read the pitch deck <Arrow />
                 </GhostButton>
