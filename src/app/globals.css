@@ -129,9 +129,14 @@ body {
     opacity 0.9s var(--ease),
     transform 0.9s var(--ease);
   transition-delay: calc(var(--i, 0) * 90ms);
-  /* Safety net for when JS fails to load/hydrate or a fast scroller
-     never triggers the observer: reveal anyway after a couple seconds. */
+}
+/* Safety net: if Motion never mounts (failed chunk or hydration),
+   reveal anyway after a couple seconds. */
+.js:not(.motion-ready) [data-reveal] {
   animation: reveal-fallback 0.6s var(--ease) 2.5s forwards;
+}
+.js:not(.motion-ready) .podium {
+  transform: none;
 }
 @keyframes reveal-fallback {
   to {

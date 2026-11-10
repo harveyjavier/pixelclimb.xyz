@@ -323,7 +323,7 @@ export default function Home() {
   return (
     <div className="relative overflow-x-clip">
       <Motion />
-      <SiteHeader playHref={LINKS.play} />
+      <SiteHeader playHref={LINKS.web} />
 
       <main id="top">
         {/* Hero */}
@@ -371,7 +371,7 @@ export default function Home() {
               </p>
 
               <div
-                className="intro mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center lg:justify-start"
+                className="intro mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
                 style={vars({ "--i": 2 })}
               >
                 <PrimaryButton href={LINKS.play}>
@@ -555,12 +555,15 @@ export default function Home() {
               <Stairs />
               <h2 className="mt-8 text-balance font-pixel text-3xl sm:text-5xl">How high can you climb?</h2>
               <p className="mx-auto mt-5 max-w-md text-muted">
-                Free on Android. Building with us or want to invest? Get in touch.
+                Free on Android and in your browser. Building with us or want to invest? Get in touch.
               </p>
-              <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <PrimaryButton href={LINKS.play}>
                   <PlayIcon /> Play now
                 </PrimaryButton>
+                <GhostButton href={LINKS.web}>
+                  Play in browser <Arrow />
+                </GhostButton>
                 <GhostButton href={LINKS.email}>Contact the team</GhostButton>
               </div>
             </div>

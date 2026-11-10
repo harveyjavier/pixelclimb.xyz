@@ -41,7 +41,7 @@ export default function GameplayVideo({
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       aria-label={label}
     >
       <source src="/media/gameplay.webm" type="video/webm" />

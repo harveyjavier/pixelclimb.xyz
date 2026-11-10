@@ -12,6 +12,8 @@ import { useEffect } from "react";
  */
 export default function Motion() {
   useEffect(() => {
+    // Turns off the CSS reveal fallback in globals.css now that the observer runs.
+    document.documentElement.classList.add("motion-ready");
     const io = new IntersectionObserver(
       (entries) => {
         for (const { target, isIntersecting } of entries) {
